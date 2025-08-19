@@ -1,0 +1,9 @@
+.dart_tool/
+.idea/
+build/
+
+.metadata
+.flutter-plugins-dependencies
+
+# FVM Version Cache
+.fvm/
