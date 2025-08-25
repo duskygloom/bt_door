@@ -20,9 +20,31 @@ class MainTheme {
       // light mode specific things
       textTheme = typo.black;
     }
+
+    final normalBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(color: colors.outline, width: 2),
+    );
+
     return ThemeData.from(colorScheme: colors, useMaterial3: true).copyWith(
       textTheme: GoogleFonts.senTextTheme(textTheme),
-      appBarTheme: AppBarTheme(centerTitle: true),
+      appBarTheme: AppBarTheme(
+        actionsPadding: EdgeInsets.all(4),
+        centerTitle: true,
+      ),
+      cardTheme: CardThemeData(
+        margin: EdgeInsets.all(8),
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(8),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: normalBorder,
+        enabledBorder: normalBorder,
+        disabledBorder: normalBorder,
+        filled: true,
+      ),
     );
   }
 
@@ -37,3 +59,15 @@ ColorScheme colorSchemeOf(BuildContext context) {
 double scaledSizeOf(BuildContext context, double size) {
   return MediaQuery.of(context).textScaler.scale(size);
 }
+
+Color activeColorOf(BuildContext context) {
+  if (Theme.brightnessOf(context) == Brightness.dark) {
+    return Colors.green;
+  } else {
+    return Colors.green;
+  }
+}
+
+double get bigScreenWidth => 800;
+
+double screenWidthOf(BuildContext context) => MediaQuery.sizeOf(context).width;
